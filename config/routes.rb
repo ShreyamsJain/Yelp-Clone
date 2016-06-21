@@ -8,6 +8,8 @@ Yelp::Application.routes.draw do
   # Adding places controller
   root 'places#index'
 
+  resources :places
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
