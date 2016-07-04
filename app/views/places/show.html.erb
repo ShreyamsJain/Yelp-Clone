@@ -39,10 +39,11 @@
 </div>
 <div class="clear"></div>
 
-<!-- Button trigger modal -->
+<!-- Button trigger modal 
 <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
   Add a comment
 </button>
+-->
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -87,5 +88,54 @@
       <%= comment.message %>
       <small><%= comment.user.email %></small>
     </blockquote>
+  </div>
+<% end %>
+
+<div class="clear"></div>
+
+
+<!--<h1>Photos</h1>
+
+<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal2">
+  Upload Photos
+</button> -->
+
+<!-- Modal -->
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Add a photo</h4>
+      </div>
+      <%= simple_form_for @photo, url: place_photos_path(@place) do |g| %>
+      <div class="modal-body">
+        <%= g.input :picture %>
+        <%= g.input :caption %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <%= g.submit "Add a Photo", class: 'btn btn-primary' %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div>
+  <h1 class="pull-left">Photos</h1>
+  <!-- Button trigger modal -->
+    <button class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#myModal2">
+      Add a photo
+    </button>
+</div>
+<div class="clear"></div>
+
+<% @place.photos.each do |photo| %>
+  <div class="col-xs-12 col-sm-3">
+  <%= image_tag( photo.picture, class: "image")%>
+    <!-- <blockquote>
+     <b><%= photo.caption %></b> 
+    </blockquote> -->
   </div>
 <% end %>
